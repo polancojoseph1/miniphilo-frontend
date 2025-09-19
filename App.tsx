@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import DonateScreen from './src/screens/Donate/DonateScreen';
+// import RecordScreen from './src/screens/Record/RecordScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,9 +30,12 @@ function HomeScreen({navigation}: any) {
       </TouchableOpacity>
 
       {/* Record First Button */}
-      <TouchableOpacity style={styles.recordButton}>
+      <TouchableOpacity
+        style={styles.recordButton}
+        onPress={() => navigation.navigate('Record')}>
         <Text style={styles.recordButtonText}>Record Message First</Text>
       </TouchableOpacity>
+
 
       {/* Debug Info */}
       <Text style={styles.description}>
@@ -48,6 +52,7 @@ function App(): React.JSX.Element {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
         <Stack.Screen name="Donate" component={DonateScreen} />
+        {/* <Stack.Screen name="Record" component={RecordScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
