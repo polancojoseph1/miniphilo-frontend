@@ -8,8 +8,6 @@
 //   ScrollView,
 //   Alert,
 //   useColorScheme,
-//   PermissionsAndroid,
-//   Platform,
 // } from 'react-native';
 // import {SafeAreaView} from 'react-native-safe-area-context';
 // import {
@@ -17,7 +15,6 @@
 //   useCameraDevice,
 //   useCameraPermission,
 //   useMicrophonePermission,
-//   CameraDevice,
 // } from 'react-native-vision-camera';
 
 // export default function RecordScreen() {
@@ -26,6 +23,9 @@
 //   const [recordingTime, setRecordingTime] = useState(0);
 //   const [videoPath, setVideoPath] = useState<string | null>(null);
 //   const [showCamera, setShowCamera] = useState(false);
+
+
+//   console.log('HELLO MUNDITO!!! <-----------------------------------------')
   
 //   const isDarkMode = useColorScheme() === 'dark';
 //   const camera = useRef<Camera>(null);
@@ -87,11 +87,11 @@
 //       }, 1000);
 
 //       // Start recording
-//       const video = await camera.current.startRecording({
-//         onRecordingFinished: (video) => {
-//           setVideoPath(video.path);
+//       await camera.current.startRecording({
+//         onRecordingFinished: (recordedVideo) => {
+//           setVideoPath(recordedVideo.path);
 //           setHasRecording(true);
-//           console.log('Video recorded:', video.path);
+//           console.log('Video recorded:', recordedVideo.path);
 //         },
 //         onRecordingError: (error) => {
 //           console.error('Recording error:', error);
