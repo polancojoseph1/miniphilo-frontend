@@ -15,6 +15,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import DonateScreen from './src/screens/Donate/DonateScreen';
+import PaymentScreen from './src/screens/Donate/PaymentScreen';
+import ConfirmationScreen from './src/screens/Donate/ConfirmationScreen';
 import RecordScreen from './src/screens/Record/RecordScreen';
 
 const Stack = createNativeStackNavigator();
@@ -174,6 +176,27 @@ function App(): React.JSX.Element {
             headerStyle: {backgroundColor: '#ffffff'},
             headerTintColor: '#2E7D32',
             headerTitleStyle: {fontWeight: 'bold'},
+          }}
+        />
+        <Stack.Screen 
+          name="Payment" 
+          component={PaymentScreen}
+          options={{
+            title: 'Secure Payment',
+            headerStyle: {backgroundColor: '#ffffff'},
+            headerTintColor: '#2E7D32',
+            headerTitleStyle: {fontWeight: 'bold'},
+          }}
+        />
+        <Stack.Screen 
+          name="Confirmation" 
+          component={ConfirmationScreen}
+          options={{
+            title: 'Thank You!',
+            headerStyle: {backgroundColor: '#ffffff'},
+            headerTintColor: '#2E7D32',
+            headerTitleStyle: {fontWeight: 'bold'},
+            headerLeft: () => null, // Prevent back navigation
           }}
         />
         <Stack.Screen 
