@@ -13,8 +13,8 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function PaymentScreen({route, navigation}: any) {
-  const {amount, processingFee, netAmount} = route.params;
-  
+  const {donationAmount, processingFee, totalCharge} = route.params;
+
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
@@ -72,22 +72,22 @@ export default function PaymentScreen({route, navigation}: any) {
   // Process payment (placeholder for Stripe integration)
   const processPayment = async () => {
     if (!validateForm()) return;
-    
+
     setIsProcessing(true);
-    
+
     try {
       // TODO: Integrate with Stripe
       // This is a placeholder simulation
       await new Promise(resolve => setTimeout(() => resolve(undefined), 2000));
-      
+
       // Simulate random success/failure for demo
       const success = Math.random() > 0.1; // 90% success rate
-      
+
       if (success) {
         navigation.navigate('Confirmation', {
-          amount,
+          donationAmount,
           processingFee,
-          netAmount,
+          totalCharge,
           email,
           transactionId: `TXN${Date.now()}`,
           cardLast4: cardNumber.replace(/\s/g, '').slice(-4),
@@ -123,7 +123,7 @@ export default function PaymentScreen({route, navigation}: any) {
             <Text style={styles.summaryTitle}>Donation Summary</Text>
             <View style={styles.summaryRow}>
               <Text style={styles.summaryLabel}>Donation amount:</Text>
-              <Text style={styles.summaryValue}>${amount.toFixed(2)}</Text>
+              <Text style={styles.summaryValue}>${donationAmount.toFixed(2)}</Text>
             </View>
             <View style={styles.summaryRow}>
               <Text style={styles.summaryLabel}>Processing fee:</Text>
@@ -131,7 +131,7 @@ export default function PaymentScreen({route, navigation}: any) {
             </View>
             <View style={[styles.summaryRow, styles.summaryTotal]}>
               <Text style={styles.summaryLabelTotal}>Total charge:</Text>
-              <Text style={styles.summaryValueTotal}>${amount.toFixed(2)}</Text>
+              <Text style={styles.summaryValueTotal}>${totalCharge.toFixed(2)}</Text>
             </View>
           </View>
 
@@ -211,13 +211,33 @@ export default function PaymentScreen({route, navigation}: any) {
           <View style={styles.securitySection}>
             <Text style={styles.securityTitle}>🔒 Secure Payment</Text>
             <Text style={styles.securityText}>
-              Your payment information is encrypted and processed securely by Stripe. 
+              Your payment information is encrypted and processed securely by Stripe.
               We never store your card details.
             </Text>
           </View>
 
           {/* Submit Button */}
           <View style={styles.buttonSection}>
+            {/* Temporary bypass button for testing */}
+            <TouchableOpacity
+              style={[styles.submitButton, styles.testButton]}
+              onPress={() => {
+                navigation.navigate('Confirmation', {
+                  donationAmount,
+                  processingFee,
+                  totalCharge,
+                  email: 'test@example.com',
+                  transactionId: `TEST${Date.now()}`,
+                  cardLast4: '1234',
+                });
+              }}
+              activeOpacity={0.8}
+            >
+              <Text style={styles.submitButtonText}>
+                SKIP PAYMENT (Testing Only)
+              </Text>
+            </TouchableOpacity>
+
             <TouchableOpacity
               style={[styles.submitButton, isProcessing && styles.submitButtonDisabled]}
               onPress={processPayment}
@@ -225,7 +245,7 @@ export default function PaymentScreen({route, navigation}: any) {
               activeOpacity={0.8}
             >
               <Text style={styles.submitButtonText}>
-                {isProcessing ? 'Processing...' : `Donate $${amount.toFixed(2)}`}
+                {isProcessing ? 'Processing...' : `Donate $${totalCharge.toFixed(2)}`}
               </Text>
             </TouchableOpacity>
           </View>
@@ -390,5 +410,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  testButton: {
+    backgroundColor: '#FF9800',
+    marginBottom: 12,
   },
 });

@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  Platform, 
-  StyleSheet, 
-  Text, 
-  TouchableOpacity, 
-  View, 
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
   ScrollView,
   Animated,
   Dimensions,
@@ -166,50 +166,50 @@ function HomeScreen({navigation}: any) {
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
-        <Stack.Screen 
-          name="Donate" 
-          component={DonateScreen} 
-          options={{
-            title: 'Choose Your Impact',
-            headerStyle: {backgroundColor: '#ffffff'},
-            headerTintColor: '#2E7D32',
-            headerTitleStyle: {fontWeight: 'bold'},
-          }}
-        />
-        <Stack.Screen 
-          name="Payment" 
-          component={PaymentScreen}
-          options={{
-            title: 'Secure Payment',
-            headerStyle: {backgroundColor: '#ffffff'},
-            headerTintColor: '#2E7D32',
-            headerTitleStyle: {fontWeight: 'bold'},
-          }}
-        />
-        <Stack.Screen 
-          name="Confirmation" 
-          component={ConfirmationScreen}
-          options={{
-            title: 'Thank You!',
-            headerStyle: {backgroundColor: '#ffffff'},
-            headerTintColor: '#2E7D32',
-            headerTitleStyle: {fontWeight: 'bold'},
-            headerLeft: () => null, // Prevent back navigation
-          }}
-        />
-        <Stack.Screen 
-          name="Record" 
-          component={RecordScreen}
-          options={{
-            title: 'Create Your Message',
-            headerStyle: {backgroundColor: '#ffffff'},
-            headerTintColor: '#2E7D32',
-            headerTitleStyle: {fontWeight: 'bold'},
-          }}
-        />
-      </Stack.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
+          <Stack.Screen 
+            name="Donate" 
+            component={DonateScreen} 
+            options={{
+              title: 'Choose Your Impact',
+              headerStyle: {backgroundColor: '#ffffff'},
+              headerTintColor: '#2E7D32',
+              headerTitleStyle: {fontWeight: 'bold'},
+            }}
+          />
+          <Stack.Screen 
+            name="Payment" 
+            component={PaymentScreen}
+            options={{
+              title: 'Secure Payment',
+              headerStyle: {backgroundColor: '#ffffff'},
+              headerTintColor: '#2E7D32',
+              headerTitleStyle: {fontWeight: 'bold'},
+            }}
+          />
+          <Stack.Screen 
+            name="Confirmation" 
+            component={ConfirmationScreen}
+            options={{
+              title: 'Thank You!',
+              headerStyle: {backgroundColor: '#ffffff'},
+              headerTintColor: '#2E7D32',
+              headerTitleStyle: {fontWeight: 'bold'},
+              headerLeft: () => null, // Prevent back navigation
+            }}
+          />
+          <Stack.Screen 
+            name="Record" 
+            component={RecordScreen}
+            options={{
+              title: 'Create Your Message',
+              headerStyle: {backgroundColor: '#ffffff'},
+              headerTintColor: '#2E7D32',
+              headerTitleStyle: {fontWeight: 'bold'},
+            }}
+          />
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }

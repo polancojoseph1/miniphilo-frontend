@@ -184,7 +184,7 @@ export default function ConfirmationScreen({route, navigation}: any) {
           <View style={styles.receiptSection}>
             <Text style={styles.receiptTitle}>Receipt & Tax Information</Text>
             <Text style={styles.receiptText}>
-              A receipt has been sent to {email}. Keep this for your tax records. 
+              A receipt has been sent to {email}. Keep this for your tax records.
               If you don't receive it within 10 minutes, please check your spam folder.
             </Text>
           </View>
